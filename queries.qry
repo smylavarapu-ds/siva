@@ -1,0 +1,8 @@
+query Q1{
+  description: "Select pannumber"
+  statement:
+      SELECT testnetwork.Summary
+
+          WHERE (panNumber == '12345')
+
+}

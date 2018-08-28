@@ -1,0 +1,129 @@
+/*
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+/**
+ * Write your model definitions here
+ */
+
+namespace testnetwork
+
+asset Borrower identified by borrowerId {
+  o String borrowerId
+  o Details details
+  o Bdetails bdetails
+
+}
+
+concept Details {
+  o String fullName
+  o String panNumber
+  o String aadharNumber
+  o String mobile
+}
+
+concept Bdetails {
+  o Double amountBorrowed 
+  o String lenderName
+  o String lenderPanNumber
+  o Integer period
+  o String orgName
+
+}
+
+asset Summary identified by panNumber{
+  o String panNumber
+  o Double totalBorrowed
+  o Double paid
+  o String[] liveOrgs
+  o Double[] liveLoans
+  o String[] lenders 
+  o Double[] lenderLoans
+  o String[] associatedOrgs
+  o String[] defaultedOrgs
+  o Integer[] dpd
+  o Double balance
+}
+
+
+/*
+event mongoData {
+  o String fullName
+  o String panNumber
+  o String aadharNumber
+  o String mobile
+  o Double amountBorrowed 
+  o String lenderName
+  o String lenderPanNumber
+  o String period
+  o Double amountReturned
+  o DateTime timeReturned  
+} */
+
+
+
+
+/* participants */
+
+abstract participant PeerParticipant identified by participantId{
+  o String participantId
+}
+
+
+participant NetworkAdmin extends PeerParticipant {
+  
+}
+
+participant Organization extends PeerParticipant {
+  
+}
+
+participant Customer extends PeerParticipant {
+  
+}
+
+/* Transactions */
+
+
+transaction borrowedLoanAmount {
+
+  o String fullName
+  o String panNumber
+  o String aadharNumber
+  o String mobile
+  o Double amountBorrowed 
+  o Double paid
+  o String lenderName
+  o String lenderPanNumber
+  o Integer period
+  o Double amountReturned
+  o DateTime timeReturned optional
+  o String orgName
+  o Integer dpd
+  o Boolean defaulter
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
